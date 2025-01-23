@@ -25,7 +25,7 @@ namespace SOUI
         if(!str)   return 0;
 #ifdef WIN32
         SStringW strW=S_CA2W(str,CP_UTF8);
-        lua_pushlstring(L, (const char*)(LPCWSTR)strW, 2*strW.GetLength()+2);
+        lua_pushlstring(L, (const char*)(LPCWSTR)strW, sizeof(wchar_t)*(strW.GetLength()+1));
 #else
         lua_pushlstring(L, (const char*)str, n);
 #endif
