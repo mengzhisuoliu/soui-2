@@ -466,7 +466,7 @@ static BOOL RecordExeRestore(HANDLE hProcess, HMODULE hModule, DETOUR_EXE_RESTOR
 #define IMAGE_THUNK_DATAXX              IMAGE_THUNK_DATA32
 #define UPDATE_IMPORTS_XX               UpdateImports32
 #define DETOURS_BITS_XX                 32
-#include "uimports.cpp"
+#include "uimports.hpp"
 #undef DETOUR_EXE_RESTORE_FIELD_XX
 #undef DWORD_XX
 #undef IMAGE_NT_HEADERS_XX
