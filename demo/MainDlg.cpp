@@ -763,7 +763,11 @@ void CMainDlg::OnBtnFileWnd()
 {
     //由于资源中使用了相对路径，需要将当前路径指定到资源所在位置
     SStringT strCurDir = SApplication::getSingleton().GetAppDir();
+	#ifdef _WIN32
     strCurDir += _T("\\filewnd");
+	#else
+    strCurDir += _T("/filewnd");
+#endif //_WIN32
     SetCurrentDirectory(strCurDir);
     if(GetFileAttributes(_T("test.xml"))==INVALID_FILE_ATTRIBUTES)
     {

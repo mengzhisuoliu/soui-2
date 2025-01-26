@@ -61,6 +61,7 @@
 		<file name="png_knob" path="image\knob.png"/>
 		<file name="png_switch" path="image\switch.png"/>
 		<file name="png_switch_bg" path="image\switch_bg.png"/>
+		<file name="png_ctrl_icons" path="image\ctrl_icons.png"/>
 		<file name="qrbg" path="image\thDKT76T9X.png" />
 		<file name="img_busy" path="image\img_busy.png" />
 		<file name="btn_expand" path="image\btn_expand.png" />

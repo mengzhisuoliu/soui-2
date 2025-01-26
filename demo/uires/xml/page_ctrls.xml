@@ -9,37 +9,37 @@
 			<aniwindow name="container" layout="vbox" size="-2,-1" Interpolator="Accelerate" factor="1.0" steps="10" gravity="center" />
 		</groupTemplate>
 		<itemTemplate size="-2,30" layout="hbox" gravity="center" class_name="check2" skin="skin_category">
-			<img skin="skin_icons" name="img_indicator" size="20,20" iconIndex="0" />
+			<img skin="skin_ctrl_icons" name="img_indicator" size="20,20" iconIndex="0" />
 			<text name="txt_label" extend_left="10" />
 		</itemTemplate>
 		<data>
 			<group text="列表控件" id="1000" tip="列表控件TIP">
-        <item text="多列列表" icon="2" name="page_mclistview" id="100" tip="多列列表TIP"/>
+        <item text="多列列表" icon="0" name="page_mclistview" id="100" tip="多列列表TIP"/>
         <item text="基础列表" icon="1" name="page_listctrl" id="101" />
-        <item text="固定高度列表" icon="3" name="page_fix_height_listview" id="102" />
-				<item text="可变高度列表" icon="4" name="page_flex_height_listview" id="103" />
-				<item text="TileView" icon="5" name="page_tileview" id="104" />
-				<item text="扩展多列列表" icon="6" name="page_mclistview_ex" id="105" />
+        <item text="固定高度列表" icon="2" name="page_fix_height_listview" id="102" />
+				<item text="可变高度列表" icon="3" name="page_flex_height_listview" id="103" />
+				<item text="TileView" icon="4" name="page_tileview" id="104" />
+				<item text="扩展多列列表" icon="5" name="page_mclistview_ex" id="105" />
 			</group>
 			<group text="树型控件" id="2000">
-				<item text="TreeCtrl" icon="7" name="page_treectrl" id="106" />
-				<item text="TreeView" icon="8" name="page_treeview" id="107" />
+				<item text="TreeCtrl" icon="6" name="page_treectrl" id="106" />
+				<item text="TreeView" icon="7" name="page_treeview" id="107" />
 			</group>
 			<group text="编辑器及热键" id="3000">
-				<item text="编辑器" icon="1" name="page_edit" id="108" />
-				<item text="富文本" icon="4" name="page_richedit" id="109" />
+				<item text="编辑器" icon="8" name="page_edit" id="108" />
+				<item text="富文本" icon="9" name="page_richedit" id="109" />
 			</group>
 			<group text="按钮" id="4000">
-				<item text="按钮" icon="5" name="page_button" id="110" />
-				<item text="radio button" icon="6" name="page_radio_button" id="111" />
+				<item text="按钮" icon="10" name="page_button" id="110" />
+				<item text="radio button" icon="11" name="page_radio_button" id="111" />
 			</group>
 			<group text="其它控件" id="5000">
-				<item text="进度条控件" icon="7" name="page_progress" id="112" />
-				<item text="日历" icon="8" name="page_calendar" id="113" />
-				<item text="分割窗口" icon="1" name="page_splitwnd" id="114" />
-				<item text="列表框及组合框" icon="2" name="page_listbox" id="115" />
-				<item text="属性表控件" icon="3" name="page_property" id="116" />
-				<item text="更多控件" icon="3" name="page_morectrl" id="117" />
+				<item text="进度条控件" icon="12" name="page_progress" id="112" />
+				<item text="分割窗口" icon="13" name="page_splitwnd" id="114" />
+				<item text="列表框及组合框" icon="14" name="page_listbox" id="115" />
+				<item text="日历" icon="15" name="page_calendar" id="113" />
+				<item text="属性表控件" icon="16" name="page_property" id="116" />
+				<item text="更多控件" icon="17" name="page_morectrl" id="117" />
 			</group>
 		</data>
 	</grouplist>
@@ -263,22 +263,22 @@
 				</group>
 				<window size="0,0" weight="1" />
 				<group text="radio image" layout="grid" rowCount="2" padding="20" interval="10">
-					<radio2 name="radio3_1" skin="skin_webbtn_forward">
+					<radio2 name="radio3_1" skin="skin_tab_main" size="28,28">
 						<text text="1" pos="|0,|0" offset="-0.5,-0.5" colorText="@color/red"/>
 					</radio2>
-					<radio2 name="radio3_2" skin="skin_webbtn_forward">
+					<radio2 name="radio3_2" skin="skin_tab_main" size="28,28">
 						<text text="2" pos="|0,|0" offset="-0.5,-0.5" colorText="@color/red"/>
 					</radio2>
-					<radio2 name="radio3_3" skin="skin_webbtn_forward">
+					<radio2 name="radio3_3" skin="skin_tab_main" size="28,28">
 						<text text="3" pos="|0,|0" offset="-0.5,-0.5" colorText="@color/red"/>
 					</radio2>
-					<radio2 name="radio3_4" checked="1" skin="skin_webbtn_forward">
+					<radio2 name="radio3_4" checked="1" skin="skin_tab_main" size="28,28">
 						<text text="4" pos="|0,|0" offset="-0.5,-0.5" colorText="@color/red"/>
 					</radio2>
-					<radio2 name="radio3_5" skin="skin_webbtn_forward">
+					<radio2 name="radio3_5" skin="skin_tab_main" size="28,28">
 						<text text="5" pos="|0,|0" offset="-0.5,-0.5" colorText="@color/red"/>
 					</radio2>
-					<radio2 name="radio3_6" skin="skin_webbtn_forward">
+					<radio2 name="radio3_6" skin="skin_tab_main" size="28,28">
 						<text text="6" pos="|0,|0" offset="-0.5,-0.5" colorText="@color/red"/>
 					</radio2>
 				</group>

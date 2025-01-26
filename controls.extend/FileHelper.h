@@ -48,7 +48,7 @@ inline BOOL BuildFilePath(LPCTSTR pszCurPath, LPCTSTR pszNewPath, BOOL bPath = T
     _tcscpy_s(szNewPath, _countof(szNewPath), pszNewPath);
     if (bPath)
     {
-        int nLen = _tcslen(szNewPath);
+        size_t nLen = _tcslen(szNewPath);
         if (szNewPath[nLen - 1] != _T(PATH_SEPARATOR))
             _tcscat(szNewPath, _T(C2S(PATH_SEPARATOR)));
     }

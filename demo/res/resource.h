@@ -1,4 +1,4 @@
-﻿//stamp:33fe9abe10cb4961
+﻿//stamp:33feb46488b767f3
 /*<------------------------------------------------------------------------------------------------->*/
 /*该文件由uiresbuilder生成，请不要手动修改*/
 /*<------------------------------------------------------------------------------------------------->*/
@@ -65,6 +65,7 @@
 			const TCHAR * png_knob;
 			const TCHAR * png_switch;
 			const TCHAR * png_switch_bg;
+			const TCHAR * png_ctrl_icons;
 			const TCHAR * qrbg;
 			const TCHAR * img_busy;
 			const TCHAR * btn_expand;
@@ -277,6 +278,7 @@ struct _UIRES UIRES={
 			_T("IMGX:png_knob"),
 			_T("IMGX:png_switch"),
 			_T("IMGX:png_switch_bg"),
+			_T("IMGX:png_ctrl_icons"),
 			_T("IMGX:qrbg"),
 			_T("IMGX:img_busy"),
 			_T("IMGX:btn_expand"),
@@ -564,10 +566,7 @@ struct _R{
 		 const wchar_t * menu_clear_group;
 		 const wchar_t * menu_del_group;
 		 const wchar_t * menu_exit;
-		 const wchar_t * menu_export_from_group;
 		 const wchar_t * menu_help;
-		 const wchar_t * menu_import_to_group;
-		 const wchar_t * menu_load_rate_db;
 		 const wchar_t * menu_modify_group;
 		 const wchar_t * menu_open_lib;
 		 const wchar_t * menu_save_lib;
@@ -809,10 +808,7 @@ struct _R{
 		int menu_clear_group;
 		int menu_del_group;
 		int menu_exit;
-		int menu_export_from_group;
 		int menu_help;
-		int menu_import_to_group;
-		int menu_load_rate_db;
 		int menu_modify_group;
 		int menu_open_lib;
 		int menu_save_lib;
@@ -1078,10 +1074,7 @@ struct _R R={
 		L"menu_clear_group",
 		L"menu_del_group",
 		L"menu_exit",
-		L"menu_export_from_group",
 		L"menu_help",
-		L"menu_import_to_group",
-		L"menu_load_rate_db",
 		L"menu_modify_group",
 		L"menu_open_lib",
 		L"menu_save_lib",
@@ -1324,10 +1317,7 @@ struct _R R={
 		24,
 		65536,
 		12,
-		34,
 		101,
-		33,
-		11,
 		22,
 		13,
 		14,
