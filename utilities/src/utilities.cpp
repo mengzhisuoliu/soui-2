@@ -299,6 +299,8 @@ long file_length(const char* path)
 {
     struct stat st;
     int fd = stat(path, &st);
+    if(fd != 0)
+        return 0;
     if (S_ISDIR(st.st_mode))
         return 0;
     return st.st_size;

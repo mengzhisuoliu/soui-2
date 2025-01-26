@@ -73,6 +73,9 @@ UINT SSkinImgList::GetExpandMode() const
 HRESULT SSkinImgList::OnAttrSrc(const SStringW &value, BOOL bLoading)
 {
     m_strSrc = value;
+#ifndef _WIN32
+    m_strSrc.ReplaceChar('\\', '/');
+#endif //_WIN32
     if (!bLoading)
     {
         m_pImg.Attach(LOADIMAGE2(m_strSrc));

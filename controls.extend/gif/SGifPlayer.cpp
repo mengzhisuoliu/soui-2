@@ -54,6 +54,8 @@ void SGifPlayer::OnNextFrame()
     if(m_nNextInterval <= 0 && m_aniSkin)
     {
         int nStates=m_aniSkin->GetStates();
+		if(nStates==0)
+			return;
         m_iCurFrame++;
 		if (!m_bLoop && m_iCurFrame >= nStates)
     	{

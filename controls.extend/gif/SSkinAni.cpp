@@ -30,6 +30,9 @@ SNSBEGIN
 
         if(nSegs == 2)
         {
+#ifndef _WIN32
+            strLst[1].ReplaceChar('\\', '/');
+#endif //_WIN32
             szBuf=GETRESPROVIDER->GetRawBufferSize(strLst[0],strLst[1]);
             if(szBuf)
             {
