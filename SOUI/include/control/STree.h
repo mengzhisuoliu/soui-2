@@ -99,6 +99,11 @@ class CSTree {
     typedef BOOL (*CBTRAVERSING)(T *, LPARAM);
 
   public:
+    struct IDataFreer
+    {
+        virtual void OnDataFree(T &data) = 0;
+    };
+  public:
     /**
      * CSTree::CSTree
      * @brief    构造函数
@@ -106,9 +111,10 @@ class CSTree {
      * Describe  构造函数
      */
     CSTree()
+        : m_hRootFirst(NULL)
+        , m_hRootLast(NULL)
+        , m_dataFreer(NULL)
     {
-        m_hRootFirst = NULL;
-        m_hRootLast = NULL;
     }
 
     /**
@@ -697,6 +703,10 @@ class CSTree {
         }
     }
 
+    void SetDataFreer(IDataFreer * cbFree)
+    {
+        m_dataFreer = cbFree;
+    }
   private:
     /**
      * CSTree::FreeNode
@@ -732,8 +742,10 @@ class CSTree {
      */
     virtual void OnNodeFree(T &data)
     {
+        if (m_dataFreer)
+            m_dataFreer->OnDataFree(data);
     }
-
+    IDataFreer *m_dataFreer;
     HSTREENODE m_hRootFirst; /**< 第一个根节点 */
     HSTREENODE m_hRootLast;  /**< 最后一个根节点 */
 };

@@ -1,4 +1,4 @@
-﻿//stamp:33fe199815a3e0ae
+﻿//stamp:33fe9abe10cb4961
 /*<------------------------------------------------------------------------------------------------->*/
 /*该文件由uiresbuilder生成，请不要手动修改*/
 /*<------------------------------------------------------------------------------------------------->*/
@@ -49,10 +49,10 @@
 			const TCHAR * page_webkit;
 			const TCHAR * page_about;
 			const TCHAR * page_animator;
+			const TCHAR * page_morectrl;
 			const TCHAR * treectrl;
 			const TCHAR * page_script;
 			const TCHAR * dlg_formatmsg;
-			const TCHAR * template_calendar;
 			const TCHAR * dlg_skiatext;
 			const TCHAR * page_treeview;
 			const TCHAR * dlg_set_skin;
@@ -62,6 +62,9 @@
 			const TCHAR * xml_love;
 			}LAYOUT;
 		struct _IMGX{
+			const TCHAR * png_knob;
+			const TCHAR * png_switch;
+			const TCHAR * png_switch_bg;
 			const TCHAR * qrbg;
 			const TCHAR * img_busy;
 			const TCHAR * btn_expand;
@@ -109,6 +112,7 @@
 			const TCHAR * png_girl;
 			const TCHAR * png_love;
 			const TCHAR * png_soui;
+			const TCHAR * png_hot;
 			}IMGX;
 		struct _img_calendar2{
 			const TCHAR * png_skin_btn_semiarc;
@@ -206,6 +210,9 @@
 		struct _svg{
 			const TCHAR * tiger;
 			}svg;
+		struct _xml{
+			const TCHAR * roomlist;
+			}xml;
 	};
 #endif//_UIRES_H_
 #ifdef INIT_R_DATA
@@ -254,10 +261,10 @@ struct _UIRES UIRES={
 			_T("LAYOUT:page_webkit"),
 			_T("LAYOUT:page_about"),
 			_T("LAYOUT:page_animator"),
+			_T("LAYOUT:page_morectrl"),
 			_T("LAYOUT:treectrl"),
 			_T("LAYOUT:page_script"),
 			_T("LAYOUT:dlg_formatmsg"),
-			_T("LAYOUT:template_calendar"),
 			_T("LAYOUT:dlg_skiatext"),
 			_T("LAYOUT:page_treeview"),
 			_T("LAYOUT:dlg_set_skin"),
@@ -267,6 +274,9 @@ struct _UIRES UIRES={
 			_T("LAYOUT:xml_love"),
 		},
 		{
+			_T("IMGX:png_knob"),
+			_T("IMGX:png_switch"),
+			_T("IMGX:png_switch_bg"),
 			_T("IMGX:qrbg"),
 			_T("IMGX:img_busy"),
 			_T("IMGX:btn_expand"),
@@ -314,6 +324,7 @@ struct _UIRES UIRES={
 			_T("IMGX:png_girl"),
 			_T("IMGX:png_love"),
 			_T("IMGX:png_soui"),
+			_T("IMGX:png_hot"),
 		},
 		{
 			_T("img_calendar2:png_skin_btn_semiarc"),
@@ -411,6 +422,9 @@ struct _UIRES UIRES={
 		{
 			_T("svg:tiger"),
 		},
+		{
+			_T("xml:roomlist"),
+		},
 	};
 #else
 extern struct _UIRES UIRES;
@@ -422,6 +436,7 @@ struct _R{
 	struct _name{
 		 const wchar_t * name_3d_test;
 		 const wchar_t * album;
+		 const wchar_t * ani_hot;
 		 const wchar_t * ani_test;
 		 const wchar_t * artist;
 		 const wchar_t * btn4_1;
@@ -440,6 +455,7 @@ struct _R{
 		 const wchar_t * btn_createchildren;
 		 const wchar_t * btn_display;
 		 const wchar_t * btn_filewnd;
+		 const wchar_t * btn_go_offcial_url;
 		 const wchar_t * btn_hidetst;
 		 const wchar_t * btn_icon;
 		 const wchar_t * btn_init_listbox;
@@ -447,29 +463,20 @@ struct _R{
 		 const wchar_t * btn_lrc;
 		 const wchar_t * btn_menu;
 		 const wchar_t * btn_msgbox;
-		 const wchar_t * btn_next_month;
 		 const wchar_t * btn_open_wrap_content;
-		 const wchar_t * btn_pick_month_cancel;
-		 const wchar_t * btn_pick_month_finish;
-		 const wchar_t * btn_prev_month;
 		 const wchar_t * btn_richedit_open;
 		 const wchar_t * btn_richedit_save;
 		 const wchar_t * btn_run;
 		 const wchar_t * btn_set_prop_value;
 		 const wchar_t * btn_skin;
-		 const wchar_t * btn_start_notify_thread;
-		 const wchar_t * btn_stop_notify_thread;
 		 const wchar_t * btn_test;
 		 const wchar_t * btn_text;
 		 const wchar_t * btn_tip;
-		 const wchar_t * btn_today;
 		 const wchar_t * btn_uninstall;
 		 const wchar_t * btn_webkit_back;
 		 const wchar_t * btn_webkit_fore;
 		 const wchar_t * btn_webkit_go;
 		 const wchar_t * btn_webkit_refresh;
-		 const wchar_t * btn_year_next;
-		 const wchar_t * btn_year_prev;
 		 const wchar_t * cbx_in_lv;
 		 const wchar_t * cbx_interpolator;
 		 const wchar_t * cbx_test;
@@ -506,8 +513,6 @@ struct _R{
 		 const wchar_t * gl_catalog;
 		 const wchar_t * group1;
 		 const wchar_t * group2;
-		 const wchar_t * group_months;
-		 const wchar_t * group_years;
 		 const wchar_t * img_file_icon;
 		 const wchar_t * img_girl;
 		 const wchar_t * img_icon;
@@ -534,6 +539,7 @@ struct _R{
 		 const wchar_t * img_skin_8;
 		 const wchar_t * img_skin_9;
 		 const wchar_t * img_soui;
+		 const wchar_t * img_state;
 		 const wchar_t * ip_test;
 		 const wchar_t * lasttime;
 		 const wchar_t * lb_test;
@@ -545,6 +551,8 @@ struct _R{
 		 const wchar_t * matrix_test;
 		 const wchar_t * mclv_test;
 		 const wchar_t * mclv_test_header;
+		 const wchar_t * menu_230;
+		 const wchar_t * menu_231;
 		 const wchar_t * menu_about;
 		 const wchar_t * menu_add_group;
 		 const wchar_t * menu_btn_cir;
@@ -564,7 +572,6 @@ struct _R{
 		 const wchar_t * menu_open_lib;
 		 const wchar_t * menu_save_lib;
 		 const wchar_t * menu_slider_vol;
-		 const wchar_t * mp_test;
 		 const wchar_t * musiclist;
 		 const wchar_t * mytree;
 		 const wchar_t * option2_1;
@@ -573,12 +580,11 @@ struct _R{
 		 const wchar_t * page_edit;
 		 const wchar_t * page_fix_height_listview;
 		 const wchar_t * page_flex_height_listview;
-		 const wchar_t * page_hotkey;
-		 const wchar_t * page_ipctrl;
 		 const wchar_t * page_listbox;
 		 const wchar_t * page_listctrl;
 		 const wchar_t * page_mclistview;
 		 const wchar_t * page_mclistview_ex;
+		 const wchar_t * page_morectrl;
 		 const wchar_t * page_progress;
 		 const wchar_t * page_property;
 		 const wchar_t * page_radio_button;
@@ -588,8 +594,6 @@ struct _R{
 		 const wchar_t * page_treectrl;
 		 const wchar_t * page_treeview;
 		 const wchar_t * pane_left;
-		 const wchar_t * panel_calendar;
-		 const wchar_t * panel_month_picker;
 		 const wchar_t * playbtn;
 		 const wchar_t * player_1;
 		 const wchar_t * player_2;
@@ -613,11 +617,13 @@ struct _R{
 		 const wchar_t * radio_2;
 		 const wchar_t * radio_3;
 		 const wchar_t * radio_4;
+		 const wchar_t * radio_5;
+		 const wchar_t * radio_6;
 		 const wchar_t * rating_score;
 		 const wchar_t * re_gifhost;
-		 const wchar_t * re_notifycenter;
 		 const wchar_t * re_temp_input;
 		 const wchar_t * re_xmlinput;
+		 const wchar_t * room_tv;
 		 const wchar_t * rotate_x;
 		 const wchar_t * rotate_y;
 		 const wchar_t * rotate_z;
@@ -651,17 +657,14 @@ struct _R{
 		 const wchar_t * title;
 		 const wchar_t * tray_008;
 		 const wchar_t * tree_test;
-		 const wchar_t * tree_view_00;
 		 const wchar_t * txt_coins;
 		 const wchar_t * txt_desc;
 		 const wchar_t * txt_index;
 		 const wchar_t * txt_installtime;
 		 const wchar_t * txt_label;
-		 const wchar_t * txt_month;
 		 const wchar_t * txt_name;
 		 const wchar_t * txt_path_length;
 		 const wchar_t * txt_rate;
-		 const wchar_t * txt_red;
 		 const wchar_t * txt_score;
 		 const wchar_t * txt_size;
 		 const wchar_t * txt_tip;
@@ -671,7 +674,6 @@ struct _R{
 		 const wchar_t * webkit_toolbar;
 		 const wchar_t * wke_test;
 		 const wchar_t * wnd_ani_host;
-		 const wchar_t * wnd_calendar;
 		 const wchar_t * wnd_container;
 		 const wchar_t * wnd_rgn;
 		 const wchar_t * wnd_temp_host;
@@ -679,6 +681,7 @@ struct _R{
 	struct _id{
 		int name_3d_test;
 		int album;
+		int ani_hot;
 		int ani_test;
 		int artist;
 		int btn4_1;
@@ -697,6 +700,7 @@ struct _R{
 		int btn_createchildren;
 		int btn_display;
 		int btn_filewnd;
+		int btn_go_offcial_url;
 		int btn_hidetst;
 		int btn_icon;
 		int btn_init_listbox;
@@ -704,29 +708,20 @@ struct _R{
 		int btn_lrc;
 		int btn_menu;
 		int btn_msgbox;
-		int btn_next_month;
 		int btn_open_wrap_content;
-		int btn_pick_month_cancel;
-		int btn_pick_month_finish;
-		int btn_prev_month;
 		int btn_richedit_open;
 		int btn_richedit_save;
 		int btn_run;
 		int btn_set_prop_value;
 		int btn_skin;
-		int btn_start_notify_thread;
-		int btn_stop_notify_thread;
 		int btn_test;
 		int btn_text;
 		int btn_tip;
-		int btn_today;
 		int btn_uninstall;
 		int btn_webkit_back;
 		int btn_webkit_fore;
 		int btn_webkit_go;
 		int btn_webkit_refresh;
-		int btn_year_next;
-		int btn_year_prev;
 		int cbx_in_lv;
 		int cbx_interpolator;
 		int cbx_test;
@@ -763,8 +758,6 @@ struct _R{
 		int gl_catalog;
 		int group1;
 		int group2;
-		int group_months;
-		int group_years;
 		int img_file_icon;
 		int img_girl;
 		int img_icon;
@@ -791,6 +784,7 @@ struct _R{
 		int img_skin_8;
 		int img_skin_9;
 		int img_soui;
+		int img_state;
 		int ip_test;
 		int lasttime;
 		int lb_test;
@@ -802,6 +796,8 @@ struct _R{
 		int matrix_test;
 		int mclv_test;
 		int mclv_test_header;
+		int menu_230;
+		int menu_231;
 		int menu_about;
 		int menu_add_group;
 		int menu_btn_cir;
@@ -821,7 +817,6 @@ struct _R{
 		int menu_open_lib;
 		int menu_save_lib;
 		int menu_slider_vol;
-		int mp_test;
 		int musiclist;
 		int mytree;
 		int option2_1;
@@ -830,12 +825,11 @@ struct _R{
 		int page_edit;
 		int page_fix_height_listview;
 		int page_flex_height_listview;
-		int page_hotkey;
-		int page_ipctrl;
 		int page_listbox;
 		int page_listctrl;
 		int page_mclistview;
 		int page_mclistview_ex;
+		int page_morectrl;
 		int page_progress;
 		int page_property;
 		int page_radio_button;
@@ -845,8 +839,6 @@ struct _R{
 		int page_treectrl;
 		int page_treeview;
 		int pane_left;
-		int panel_calendar;
-		int panel_month_picker;
 		int playbtn;
 		int player_1;
 		int player_2;
@@ -870,11 +862,13 @@ struct _R{
 		int radio_2;
 		int radio_3;
 		int radio_4;
+		int radio_5;
+		int radio_6;
 		int rating_score;
 		int re_gifhost;
-		int re_notifycenter;
 		int re_temp_input;
 		int re_xmlinput;
+		int room_tv;
 		int rotate_x;
 		int rotate_y;
 		int rotate_z;
@@ -908,17 +902,14 @@ struct _R{
 		int title;
 		int tray_008;
 		int tree_test;
-		int tree_view_00;
 		int txt_coins;
 		int txt_desc;
 		int txt_index;
 		int txt_installtime;
 		int txt_label;
-		int txt_month;
 		int txt_name;
 		int txt_path_length;
 		int txt_rate;
-		int txt_red;
 		int txt_score;
 		int txt_size;
 		int txt_tip;
@@ -928,7 +919,6 @@ struct _R{
 		int webkit_toolbar;
 		int wke_test;
 		int wnd_ani_host;
-		int wnd_calendar;
 		int wnd_container;
 		int wnd_rgn;
 		int wnd_temp_host;
@@ -960,6 +950,7 @@ struct _R R={
 	{
 		L"3d_test",
 		L"album",
+		L"ani_hot",
 		L"ani_test",
 		L"artist",
 		L"btn4_1",
@@ -978,6 +969,7 @@ struct _R R={
 		L"btn_createchildren",
 		L"btn_display",
 		L"btn_filewnd",
+		L"btn_go_offcial_url",
 		L"btn_hidetst",
 		L"btn_icon",
 		L"btn_init_listbox",
@@ -985,29 +977,20 @@ struct _R R={
 		L"btn_lrc",
 		L"btn_menu",
 		L"btn_msgbox",
-		L"btn_next_month",
 		L"btn_open_wrap_content",
-		L"btn_pick_month_cancel",
-		L"btn_pick_month_finish",
-		L"btn_prev_month",
 		L"btn_richedit_open",
 		L"btn_richedit_save",
 		L"btn_run",
 		L"btn_set_prop_value",
 		L"btn_skin",
-		L"btn_start_notify_thread",
-		L"btn_stop_notify_thread",
 		L"btn_test",
 		L"btn_text",
 		L"btn_tip",
-		L"btn_today",
 		L"btn_uninstall",
 		L"btn_webkit_back",
 		L"btn_webkit_fore",
 		L"btn_webkit_go",
 		L"btn_webkit_refresh",
-		L"btn_year_next",
-		L"btn_year_prev",
 		L"cbx_in_lv",
 		L"cbx_interpolator",
 		L"cbx_test",
@@ -1044,8 +1027,6 @@ struct _R R={
 		L"gl_catalog",
 		L"group1",
 		L"group2",
-		L"group_months",
-		L"group_years",
 		L"img_file_icon",
 		L"img_girl",
 		L"img_icon",
@@ -1072,6 +1053,7 @@ struct _R R={
 		L"img_skin_8",
 		L"img_skin_9",
 		L"img_soui",
+		L"img_state",
 		L"ip_test",
 		L"lasttime",
 		L"lb_test",
@@ -1083,6 +1065,8 @@ struct _R R={
 		L"matrix_test",
 		L"mclv_test",
 		L"mclv_test_header",
+		L"menu_230",
+		L"menu_231",
 		L"menu_about",
 		L"menu_add_group",
 		L"menu_btn_cir",
@@ -1102,7 +1086,6 @@ struct _R R={
 		L"menu_open_lib",
 		L"menu_save_lib",
 		L"menu_slider_vol",
-		L"mp_test",
 		L"musiclist",
 		L"mytree",
 		L"option2.1",
@@ -1111,12 +1094,11 @@ struct _R R={
 		L"page_edit",
 		L"page_fix_height_listview",
 		L"page_flex_height_listview",
-		L"page_hotkey",
-		L"page_ipctrl",
 		L"page_listbox",
 		L"page_listctrl",
 		L"page_mclistview",
 		L"page_mclistview_ex",
+		L"page_morectrl",
 		L"page_progress",
 		L"page_property",
 		L"page_radio_button",
@@ -1126,8 +1108,6 @@ struct _R R={
 		L"page_treectrl",
 		L"page_treeview",
 		L"pane_left",
-		L"panel_calendar",
-		L"panel_month_picker",
 		L"playbtn",
 		L"player_1",
 		L"player_2",
@@ -1151,11 +1131,13 @@ struct _R R={
 		L"radio_2",
 		L"radio_3",
 		L"radio_4",
+		L"radio_5",
+		L"radio_6",
 		L"rating_score",
 		L"re_gifhost",
-		L"re_notifycenter",
 		L"re_temp_input",
 		L"re_xmlinput",
+		L"room_tv",
 		L"rotate_x",
 		L"rotate_y",
 		L"rotate_z",
@@ -1189,17 +1171,14 @@ struct _R R={
 		L"title",
 		L"tray_008",
 		L"tree_test",
-		L"tree_view_00",
 		L"txt_coins",
 		L"txt_desc",
 		L"txt_index",
 		L"txt_installtime",
 		L"txt_label",
-		L"txt_month",
 		L"txt_name",
 		L"txt_path_length",
 		L"txt_rate",
-		L"txt_red",
 		L"txt_score",
 		L"txt_size",
 		L"txt_tip",
@@ -1209,108 +1188,98 @@ struct _R R={
 		L"webkit_toolbar",
 		L"wke_test",
 		L"wnd_ani_host",
-		L"wnd_calendar",
 		L"wnd_container",
 		L"wnd_rgn",
 		L"wnd_temp_host"
 	}
 	,
 	{
-		65682,
+		65684,
+		65585,
+		65713,
+		65568,
 		65584,
-		65567,
-		65583,
-		65611,
-		65612,
-		65613,
 		65614,
 		65615,
 		65616,
-		65697,
-		65736,
-		65731,
-		65590,
-		51,
-		65727,
-		65663,
-		65670,
-		65660,
-		65669,
-		65661,
-		65572,
-		65631,
-		0,
-		65596,
-		65657,
-		65594,
-		65715,
-		65662,
-		65723,
-		65724,
-		65713,
-		65591,
-		65592,
-		65708,
-		65635,
-		65656,
-		65685,
-		65686,
-		65575,
-		65573,
-		65600,
-		65717,
-		65569,
-		65691,
-		65692,
+		65617,
+		65618,
+		65619,
 		65695,
-		65693,
-		65722,
-		65721,
-		65576,
-		65698,
-		65629,
-		65552,
-		65688,
-		65683,
-		65553,
-		65558,
-		65561,
-		65563,
-		65565,
-		65568,
-		65647,
-		65547,
-		65586,
-		65587,
-		65588,
-		65668,
-		65711,
-		65675,
-		65676,
-		65677,
-		65595,
-		65678,
-		65694,
+		65724,
+		65719,
+		65592,
+		51,
+		65715,
+		65665,
+		65672,
+		65662,
 		65671,
-		400,
-		65684,
-		65701,
+		65714,
+		65663,
+		65573,
+		65633,
+		0,
+		65597,
+		65659,
+		65596,
+		65664,
+		65593,
+		65594,
 		65707,
+		65637,
+		65658,
+		65576,
+		65574,
+		65601,
+		65570,
+		65689,
+		65690,
+		65693,
+		65691,
+		65577,
+		65696,
+		65631,
+		65553,
+		65698,
+		65685,
+		65554,
+		65559,
+		65562,
+		65564,
+		65566,
+		65569,
+		65649,
+		65548,
+		65591,
+		65588,
+		65589,
+		65670,
+		65710,
+		65677,
+		65678,
+		65679,
+		65587,
+		65680,
+		65692,
+		65673,
+		400,
+		65686,
+		65700,
+		65706,
 		300,
 		1000,
-		65696,
-		65543,
-		65637,
-		65643,
-		65719,
-		65720,
-		65579,
-		65733,
-		65554,
-		65548,
-		65597,
+		65694,
+		65544,
+		65639,
+		65645,
+		65580,
+		65721,
+		65555,
+		65549,
 		65598,
 		65599,
+		65600,
 		10,
 		11,
 		19,
@@ -1329,28 +1298,31 @@ struct _R R={
 		16,
 		17,
 		18,
-		65730,
-		65589,
-		65585,
-		65630,
-		65570,
-		65574,
+		65718,
+		65712,
+		65590,
+		65586,
+		65632,
 		65571,
-		65577,
+		65575,
+		65572,
 		65578,
-		65674,
-		65550,
+		65579,
+		65676,
 		65551,
+		65552,
+		230,
+		231,
 		102,
 		21,
+		65541,
 		65540,
 		65539,
 		65538,
 		65537,
-		65536,
-		65541,
+		65542,
 		24,
-		23,
+		65536,
 		12,
 		34,
 		101,
@@ -1359,118 +1331,112 @@ struct _R R={
 		22,
 		13,
 		14,
-		65542,
-		65626,
-		65580,
-		65700,
-		65644,
-		112,
-		115,
+		65543,
+		65581,
+		65699,
+		65646,
+		110,
+		113,
 		108,
 		102,
 		103,
-		109,
-		110,
-		117,
+		115,
 		101,
 		100,
 		105,
-		114,
-		118,
-		113,
-		111,
+		117,
+		112,
 		116,
+		111,
+		109,
+		114,
 		104,
 		106,
 		107,
-		65732,
-		65712,
-		65718,
-		65582,
+		65720,
+		65583,
+		65701,
 		65702,
 		65703,
 		65704,
-		65705,
-		65624,
-		65618,
+		65627,
 		65621,
-		65633,
-		65632,
-		65636,
+		65624,
+		65635,
 		65634,
-		65667,
-		65605,
-		65606,
-		65607,
+		65638,
+		65636,
+		65669,
 		65608,
 		65609,
 		65610,
-		65601,
+		65611,
+		65612,
+		65613,
 		65602,
 		65603,
 		65604,
-		65559,
-		65593,
-		65687,
-		65664,
-		65710,
-		65679,
-		65680,
+		65605,
+		65606,
+		65607,
+		65560,
+		65595,
+		65666,
+		65709,
+		65711,
 		65681,
-		65620,
+		65682,
+		65683,
 		65623,
-		65645,
-		65619,
+		65626,
+		65647,
 		65622,
-		65581,
-		65628,
-		65627,
-		65549,
-		65658,
-		65617,
-		65638,
+		65625,
+		65582,
+		65630,
+		65629,
+		65550,
+		65660,
+		65620,
 		65640,
-		65641,
-		65639,
 		65642,
-		65648,
-		65646,
-		65649,
+		65643,
+		65641,
+		65644,
 		65650,
+		65648,
 		65651,
 		65652,
 		65653,
 		65654,
-		65735,
-		65546,
-		65625,
-		65544,
-		65659,
-		65734,
-		65725,
-		65709,
-		65556,
-		65557,
-		65564,
-		65545,
-		65714,
-		65555,
-		65666,
-		65706,
-		65726,
-		65560,
-		65562,
-		65728,
 		65655,
-		65566,
-		65699,
-		65690,
-		65689,
-		65729,
+		65656,
+		65723,
+		65547,
+		65628,
+		65545,
+		65661,
+		65722,
+		65708,
+		65557,
+		65558,
+		65565,
+		65546,
+		65556,
+		65668,
+		65705,
+		65561,
+		65563,
 		65716,
-		65672,
-		65673,
-		65665
+		65657,
+		65567,
+		65697,
+		65688,
+		65687,
+		65717,
+		65674,
+		65675,
+		65667
 	}
 	,
 	{

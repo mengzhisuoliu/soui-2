@@ -18,11 +18,6 @@
       <text pos="|0,|0" offset="-0.5,-0.5" colorText="#ff0000">IE CTRL需要窗口句柄，在半透明宿主上不能正常显示</text>
       <iectrl pos="0,0,-0,-0" url="http://www.baidu.com"/>
     </page>
-    <page title="calendar2">
-      <calendar2 pos="0,0,-0,-0" name="mp_test">
-        <include src="layout:template_calendar"/>
-      </calendar2>
-    </page>
     <page title="create window">
       <button name="btn_filewnd" pos="0,0,@150,@30">从文件创建窗口</button>
       <button name="btn_createchildren" pos="|0,0,@150,@30">CreateChildren</button>
@@ -86,11 +81,6 @@
       <freeMoveWindow name="fmw_test" margin="5,25,5,5" clipClient="1" captionHeight="20" captionSkin="skin_caption" colorBorder="#cccccc" width="160" height="100" valign="0x20" halign="0x02" distx="20" disty="20" colorBkgnd="@color/blue">
         <text pos="|0,|0" offset="-0.5,-0.5" multilines="1" colorText="@color/red">drag and resize\n the host to see\n what will happen.</text>
       </freeMoveWindow>
-    </page>
-    <page title="notifycenter" iconIndex="1">
-      <button pos ="5,5,@100,@30" name="btn_start_notify_thread">start</button>
-      <button pos="[10,5,@100,@30" name="btn_stop_notify_thread">stop</button>
-      <chatedit name="re_notifycenter" pos="5,[5,-5,-5" bkgndBlend="1" class="cls_edit" enableDragdrop="0" multiLines="1" vscrollBar="1" sbSkin="skin_vscrollbar" wordWrap="1"  autoVscroll="1" hscrollBar="0" wantReturn="1" maxBuf="6400000"/>
     </page>
   <page title="svg">
     <img skin="svg_tiger"/>

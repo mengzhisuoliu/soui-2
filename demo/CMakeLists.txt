@@ -73,6 +73,8 @@ set(EXTENDCOTROLS ${EXTENDCOTROLS}
 	${PROJECT_SOURCE_DIR}/controls.extend/SRoundImage.h
 	${PROJECT_SOURCE_DIR}/controls.extend/SRoundWnd.h
 	${PROJECT_SOURCE_DIR}/controls.extend/SStaticGdip.h
+	${PROJECT_SOURCE_DIR}/controls.extend/SSwitch.h
+	${PROJECT_SOURCE_DIR}/controls.extend/SImageKnob.h
 )
 
 set(EXTENDCOTROLS ${EXTENDCOTROLS}
@@ -114,6 +116,8 @@ set(EXTENDCOTROLS ${EXTENDCOTROLS}
 	${PROJECT_SOURCE_DIR}/controls.extend/SCheckBox2.cpp
 	${PROJECT_SOURCE_DIR}/controls.extend/SRoundImage.cpp
 	${PROJECT_SOURCE_DIR}/controls.extend/SRoundWnd.cpp
+	${PROJECT_SOURCE_DIR}/controls.extend/SSwitch.cpp
+	${PROJECT_SOURCE_DIR}/controls.extend/SImageKnob.cpp
 )
 
 if (CMAKE_SYSTEM_NAME MATCHES Windows)

@@ -39,6 +39,7 @@
 				<item text="分割窗口" icon="1" name="page_splitwnd" id="114" />
 				<item text="列表框及组合框" icon="2" name="page_listbox" id="115" />
 				<item text="属性表控件" icon="3" name="page_property" id="116" />
+				<item text="更多控件" icon="3" name="page_morectrl" id="117" />
 			</group>
 		</data>
 	</grouplist>
@@ -228,6 +229,10 @@
 		<page title="buttons" layout="vbox" interval="10">
 			<imgbtn name="btn_msgbox" width="200" height="40" accel="ctrl+alt+f9" font="bold:1" skin="win10btn" animate="1">show msg box</imgbtn>
 			<text>press "ctrl+alt+f9" to activate the msgbox button</text>
+			<window size="-1,-1" layout="hbox" interval="20">
+				<switch skin="skin_switch_bg" skinforce="skin_switch"/>
+				<switch skin="skin_switch_bg" skinforce="skin_switch" checked="1"/>
+			</window>
 			<link maxWidth="200" class="cls_btn_weblink" dotted="1" href="https://gitee.com/setoutsoft/soui4">https://gitee.com/setoutsoft/soui4</link>
 			<img size="100,100" skin="skin_page_icons" iconIndex="2" tip="the image show how to handle message in SImageWnd,\n you can do it by simply setting msgTransparent to 0" msgTransparent="0" />
 			<window size="-2,-1" layout="hbox" interval="10" gravity="center">
@@ -247,17 +252,6 @@
 			</window>
 		</page>
 		<page title="radiobox" layout="vbox" padding="20" interval="20">
-			<window size="-2,-1" layout="hbox" gravity="center" interval="5">
-				<text text="menubar:"/>
-				<menubar size="-1,30">
-					<btnStyle2 skin="SKIN_MENU_BTN" />
-					<menus>
-						<menuItem src="SMENU:MENU_FILE">文件(&F)</menuItem>
-						<menuItem src="SMENU:MENU_EDIT">编辑(&E)</menuItem>
-						<menuItem src="SMENU:MENU_HELP">帮助(&H)</menuItem>
-					</menus>
-				</menubar>
-			</window>
 			<window size="-2,-1" interval="50" layout="hbox">
 				<group text="radio" layout="grid" rowCount="2" padding="20" interval="10">
 					<radio height="28" name="radio_1">radio 1</radio>
@@ -344,7 +338,7 @@
 					<calstyle ncSkin="_skin.sys.border" daySkin="_skin.sys.btn.normal" margin="1" />
 				</dateTimePicker>
 			</window>
-			<calendar size="-2,0" weight="1" name="mp_test" daySkin="_skin.sys.btn.normal" todayHeight="0" yearHeight="0" weekHeight="50" textSunday="sunday" textMonday="monday" textTuesday="tuesday" textWednesday="Wednesday" textThursday="thursday" textFriday="friday" textSaturday="saturday" />
+			<calendar size="-2,0" weight="1" daySkin="_skin.sys.btn.normal" todayHeight="0" yearHeight="0" weekHeight="50" textSunday="sunday" textMonday="monday" textTuesday="tuesday" textWednesday="Wednesday" textThursday="thursday" textFriday="friday" textSaturday="saturday" />
 		</page>
 		<page title="split">
 			<splitrow name="split_row" pos="10,0,-10,-10" sepSize="6">
@@ -436,6 +430,9 @@
 					</propgroup>
 				</groups>
 			</propgrid>
+		</page>
+		<page title="morectrl">
+			<include src="layout:page_morectrl"/>
 		</page>
 	</tabctrl>
 </include>

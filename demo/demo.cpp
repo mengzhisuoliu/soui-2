@@ -20,7 +20,8 @@
 #include "../controls.extend/SRoundImage.h"
 #include "../controls.extend/SStaticGdip.h"
 #include "../controls.extend/SRoundWnd.h"
-
+#include "../controls.extend/SImageKnob.h"
+#include "../controls.extend/SSwitch.h"
 #include "../controls.extend/SMcListViewEx/SHeaderCtrlEx.h"
 #include "../controls.extend/SMcListViewEx/SMCListViewEx.h"
 
@@ -265,6 +266,8 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR /*
 		theApp->RegisterWindowClass<SRoundImage>();
 		theApp->RegisterWindowClass<SRoundWnd>();
 		theApp->RegisterWindowClass<SHexEdit>();
+        theApp->RegisterWindowClass<SImageKnob>();
+        theApp->RegisterWindowClass<SSwitch>();
 #ifdef _WIN32
 		theApp->RegisterWindowClass<SStaticGdip>();
 		if (SUCCEEDED(CUiAnimation::Init()))

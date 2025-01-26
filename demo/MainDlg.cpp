@@ -425,7 +425,7 @@ LRESULT CMainDlg::OnInitDialog( HWND hWnd, LPARAM lParam )
     }
 
 	//treeview
-	STreeView * pTreeView = FindChildByName2<STreeView>("tree_view_00");
+	STreeView * pTreeView = FindChildByName2<STreeView>("room_tv");
 	if (pTreeView)
 	{
 		CTreeViewAdapter * pTreeViewAdapter = new CTreeViewAdapter;
