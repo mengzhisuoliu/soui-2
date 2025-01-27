@@ -921,22 +921,27 @@ void SHostWnd::OnSize(UINT nType, CSize size)
     SNcPainter::updateSystemButton(GetRoot(), nType);
     if (IsIconic())
         return;
-
     if (size.cx == 0 || size.cy == 0)
         return;
-    if (m_nAutoSizing == 0)
+    
+    BOOL bSizeChange = size != m_szPrev;
+    if(bSizeChange)
     {
-        m_szAppSetted = size;
+        if (m_nAutoSizing == 0)
+        {
+            m_szAppSetted = size;
+        }
+        m_bResizing = TRUE;
+        m_memRT->Resize(size);
+        BOOL bDirty = GetRoot()->IsLayoutDirty();
+        GetRoot()->OnRelayout(CRect(0, 0, size.cx, size.cy));
+        if (m_nAutoSizing && bDirty)
+            GetRoot()->m_layoutDirty = SWindow::dirty_self;
+        m_presenter->OnHostResize(size);
+        m_bResizing = FALSE;
+        m_szPrev = size;
     }
-    m_bResizing = TRUE;
-    m_memRT->Resize(size);
-    BOOL bDirty = GetRoot()->IsLayoutDirty();
-    GetRoot()->OnRelayout(CRect(0, 0, size.cx, size.cy));
-    _Redraw();
-    if (m_nAutoSizing && bDirty)
-        GetRoot()->m_layoutDirty = SWindow::dirty_self;
-    m_presenter->OnHostResize(size);
-    m_bResizing = FALSE;
+    _Redraw();   
 }
 
 void SHostWnd::OnMouseMove(UINT nFlags, CPoint point)
