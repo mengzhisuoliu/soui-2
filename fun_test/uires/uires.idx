@@ -6,8 +6,6 @@
 		<file name="XML_MAINWND" path="xml\dlg_main.xml"/>
 		<file name="XML_MENUTEST" path="xml\menu_test.xml"/>
 		<file name="XML_MENUEXTEST" path="xml\menuex_test.xml"/>
-		<file name="xml_ipc_svr" path="xml\ipc_svr.xml"/>
-		<file name="xml_ipc_client" path="xml\ipc_client.xml"/>
 		<file name="xml_soui" path="xml\wnd_soui.xml"/>
 	</LAYOUT>
 
