@@ -36,7 +36,7 @@ void CSetSkinWnd::LoadSkinConfigFormXml()
         while (skinInf)
         {
             SKIN_CONFIG_INF inf;
-            inf.id = (SkinType)skinInf.attribute(L"id").as_int();
+            inf.id = skinInf.attribute(L"id").as_int();
             int v1 = 0, v2 = 0, v3 = 0, v4 = 0;
             swscanf(skinInf.attribute(L"skin_margin").as_string(), L"%d,%d,%d,%d", &v1, &v2, &v3, &v4);
             inf.margin.left = v1;

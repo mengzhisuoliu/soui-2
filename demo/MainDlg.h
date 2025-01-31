@@ -22,17 +22,6 @@ using namespace SOUI;
 #include "trayicon/SShellTray.h"
 
 extern UINT g_dwSkinChangeMessage;
-//演示使用SNotifyCenter的异步事件
-DEF_EVT_EXT(EventThread,EVT_EXTERNAL_BEGIN + 30000,{
-int nData;
-});
-
-//演示使用SNotifyCenter的同步事件
-DEF_EVT_EXT(EventThreadStart,EVT_EXTERNAL_BEGIN + 30001,{});
-
-
-//演示使用SNotifyCenter的同步事件
-DEF_EVT_EXT(EventThreadStop,EVT_EXTERNAL_BEGIN + 30002,{});
 
 
 /**
@@ -43,7 +32,6 @@ DEF_EVT_EXT(EventThreadStop,EVT_EXTERNAL_BEGIN + 30002,{});
 */
 class CMainDlg : public SHostWnd
 			   , public CMagnetFrame	//磁力吸附
-			   , public TAutoEventMapReg<CMainDlg>//通知中心自动注册
 			   , public ISetOrLoadSkinHandler
                , public IAnimatorListener 
                , public IAnimatorUpdateListener

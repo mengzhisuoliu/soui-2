@@ -30,7 +30,6 @@
 #endif
 
 #include <shellapi.h>
-#include "skin/SDemoSkin.h"
 #include "skin/SetSkinWnd2.h"
 #include "../controls.extend/SMcListViewEx/SMCListViewEx.h"
 #include "adapter.h"
@@ -672,15 +671,6 @@ public:
 
 
 protected:
-	void OnLButtonUp(UINT nFlags,CPoint pt)
-	{
-		SMessageBox(m_hWnd,_T("test"),_T("msgbox"),MB_OK);
-		SetMsgHandled(FALSE);
-	}
-BEGIN_MSG_MAP_EX(SSkiaTestWnd)
-	MSG_WM_LBUTTONUP(OnLButtonUp)
-	CHAIN_MSG_MAP(SHostWnd)
-END_MSG_MAP()
 
 	void OnFinalMessage(HWND hWnd){ 
 	    //演示OnFinalMessage用法,下面new出来的不需要显示调用delete

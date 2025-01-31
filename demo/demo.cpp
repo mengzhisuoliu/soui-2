@@ -67,7 +67,6 @@
 #define SYS_NAMED_RESOURCE _T("soui-sys-resource.dll")
 
 #include "../controls.extend/smiley/SSmileyCtrl.h"
-#include "skin/SDemoSkin.h"
 #include "skin/SSkinLoader.h"
 #include "trayicon/SShellTray.h"
 #include "qrcode/SQrCtrl.h"
@@ -224,10 +223,6 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR /*
 		theApp->SetRenderFactory(pRenderFactory);
 
 		theApp->SetLogManager(pLogMgr);
-		SLOGFMTE(L"log output using unicode format,str=%s, tick=%u", L"中文", GetTickCount());
-		SLOGFMTE("log output using ansi format,str=%s, tick=%u", "test", GetTickCount());
-		SLOGI()<<"test=" << 200;
-
 		//控件注册要放到AddResProvider前： 2016年3月8日
 
 		//向SApplication系统中注册由外部扩展的控件及SkinObj类
@@ -248,13 +243,9 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR /*
 
 		theApp->RegisterWindowClass<SMCListViewEx>();
 		theApp->RegisterWindowClass<SHeaderCtrlEx>();
-
 		theApp->RegisterWindowClass<SIPAddressCtrl>();//注册IP控件
 		theApp->RegisterWindowClass<SPropertyGrid>();//注册属性表控件
 		theApp->RegisterWindowClass<SChromeTabCtrl>();//注册ChromeTabCtrl
-#ifdef _WIN32
-		theApp->RegisterWindowClass<SIECtrl>();//注册IECtrl
-#endif
 		theApp->RegisterWindowClass<SChatEdit>();//注册ChatEdit
 		theApp->RegisterWindowClass<SScrollText>();//注册SScrollText
 		theApp->RegisterWindowClass<SDesktopDock>();//注册SDesktopDock
@@ -272,20 +263,21 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR /*
 		theApp->RegisterWindowClass<SHexEdit>();
         theApp->RegisterWindowClass<SImageKnob>();
         theApp->RegisterWindowClass<SSwitch>();
-#ifdef _WIN32
-		theApp->RegisterWindowClass<SStaticGdip>();
-		if (SUCCEEDED(CUiAnimation::Init()))
-		{
-			theApp->RegisterWindowClass<SUiAnimationWnd>();//注册动画控件
-		}
-#endif
 		theApp->RegisterWindowClass<SFadeFrame>();//注册渐显隐动画控件
 		theApp->RegisterWindowClass<SRadioBox2>();//注册RadioBox2
 		theApp->RegisterWindowClass<SCalendar2>();//注册SCalendar2
 
 		theApp->RegisterWindowClass<SShellTray>();
 		theApp->RegisterWindowClass<FpsWnd>();
-
+		
+#ifdef _WIN32
+		theApp->RegisterWindowClass<SIECtrl>();//注册IECtrl
+		theApp->RegisterWindowClass<SStaticGdip>();
+		if (SUCCEEDED(CUiAnimation::Init()))
+		{
+			theApp->RegisterWindowClass<SUiAnimationWnd>();//注册动画控件
+		}
+#endif
 
 		//如果需要在代码中使用R::id::namedid这种方式来使用控件必须要这一行代码：2016年2月2日，R::id,R.name是由uiresbuilder 增加-h .\res\resource.h 这2个参数后生成的。
 		theApp->InitXmlNamedID((const LPCWSTR*)&R.name, (const int*)&R.id, sizeof(R.id) / sizeof(int));
@@ -369,8 +361,11 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR /*
 		theApp->AddResProvider(pResProvider);
 
 		SSkinLoader* SkinLoader = new SSkinLoader(theApp);
+#ifdef _WIN32
 		SkinLoader->LoadSkin(_T("themes\\skin1"));
-
+#else
+		SkinLoader->LoadSkin(_T("themes/skin1"));
+#endif//_WIN32
 		if (trans)
 		{//加载语言翻译包
 			theApp->SetTranslator(trans);
@@ -426,9 +421,6 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR /*
 			nRet = theApp->Run(dlgMain.m_hWnd);
 		}
 
-#ifdef _WIN32
-		theApp->UnregisterWindowClass<SGifPlayer>();
-#endif
 		//应用程序退出
 		delete SkinLoader;
 		delete theApp;
