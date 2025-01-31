@@ -48,7 +48,7 @@ extern "C" {
 #endif
 
 	HANDLE UTILITIES_API LoadIconFromMemory(const void* buf, UINT cbSize, BOOL fIcon, int width, int height, UINT cFlag);
-
+	HRGN UTILITIES_API CreateRegionFromBitmap(HBITMAP hBmp,COLORREF cr,COLORREF crMask);
 #ifdef __cplusplus
 }
 #endif//__cplusplus

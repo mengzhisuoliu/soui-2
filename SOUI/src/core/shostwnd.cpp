@@ -72,6 +72,7 @@ void SHostWndAttr::Init()
 {
     m_bResizable = FALSE;
     m_bTranslucent = FALSE;
+    m_bAutoShape = FALSE;
     m_bAppWnd = FALSE;
     m_bToolWnd = FALSE;
     m_byWndType = WT_UNDEFINE;
@@ -373,11 +374,12 @@ HWND SHostWnd::CreateEx(HWND hWndParent, DWORD dwStyle, DWORD dwExStyle, int x, 
     }
     m_hostAttr.Init();
     m_hostAttr.InitFromXml(xmlInit);
-#ifndef _WIN32
     if (m_hostAttr.m_bTranslucent) {
+        dwExStyle |= WS_EX_LAYERED;
+#ifndef _WIN32
         dwExStyle |= WS_EX_COMPOSITED;
-    }
 #endif//_WIN32
+    }
     HWND hWnd = SNativeWnd::CreateNative(_T("HOSTWND"), dwStyle, dwExStyle, x, y, nWidth, nHeight, hWndParent, 0, xmlInit);
     UpdateAutoSizeCount(false);
     if (!hWnd)
@@ -544,10 +546,7 @@ BOOL SHostWnd::InitFromXml(IXmlNode *pNode)
     {
         dwExStyle |= WS_EX_TOOLWINDOW;
     }
-    if (IsTranslucent())
-    {
-        dwExStyle |= WS_EX_LAYERED;
-    }
+
 
     if (m_hostAttr.m_dwStyle != 0)
         dwStyle = m_hostAttr.m_dwStyle & (~WS_VISIBLE);
@@ -579,7 +578,7 @@ BOOL SHostWnd::InitFromXml(IXmlNode *pNode)
 
     GetRoot()->InitFromXml(&xmlRoot);
 
-    if (m_hostAttr.m_bTranslucent)
+    if (IsTranslucent())
     {
         #ifdef _WIN32
         if (!m_dummyWnd)
@@ -607,7 +606,13 @@ BOOL SHostWnd::InitFromXml(IXmlNode *pNode)
             m_dummyWnd->DestroyWindow(); // m_dummyWnd will be set to null in SDummyWnd::OnDestroy
         }
         if (!(dwExStyle & WS_EX_LAYERED))
+        {
+        #ifdef _WIN32
             ModifyStyleEx(0, WS_EX_LAYERED);
+        #else
+            ModifyStyleEx(0, WS_EX_LAYERED|WS_EX_COMPOSITED);
+        #endif//_WIN32
+        }
         SetLayeredWindowAlpha(GetRoot()->GetAlpha());
     }
     m_memRT = NULL;
@@ -1195,11 +1200,7 @@ SWND SHostWnd::OnSetSwndCapture(SWND swnd)
 
 BOOL SHostWnd::IsTranslucent() const
 {
-#ifdef _WIN32
     return m_hostAttr.m_bTranslucent;
-#else
-    return GetExStyle() & WS_EX_COMPOSITED;
-#endif//_WIN32
 }
 
 BOOL SHostWnd::IsSendWheel2Hover() const

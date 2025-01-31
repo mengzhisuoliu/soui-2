@@ -41,7 +41,7 @@ class SOUI_EXP SHostWndAttr : public TObjRefImpl<SObject> {
     friend class SHostWnd;
     friend class SRootWindow;
     friend class SNcPainter;
-
+    friend class SHostPresenter;
   public:
     SHostWndAttr(void);
 
@@ -73,6 +73,7 @@ class SOUI_EXP SHostWndAttr : public TObjRefImpl<SObject> {
         ATTR_DWORD(L"wndStyleEx", m_dwExStyle, FALSE)
         ATTR_BOOL(L"resizable", m_bResizable, FALSE)
         ATTR_BOOL(L"translucent", m_bTranslucent, FALSE)
+        ATTR_BOOL(L"autoShape", m_bAutoShape, FALSE)
         ATTR_BOOL(L"sendWheel2Hover", m_bSendWheel2Hover, FALSE)
         ATTR_BOOL(L"appWnd", m_bAppWnd, FALSE)
         ATTR_BOOL(L"toolWindow", m_bToolWnd, FALSE)
@@ -98,6 +99,7 @@ class SOUI_EXP SHostWndAttr : public TObjRefImpl<SObject> {
     DWORD m_bAppWnd : 1;          // APP窗口，在任务栏上显示按钮
     DWORD m_bToolWnd : 1;         //设置WS_ES_TOOLWINDOW属性
     DWORD m_bTranslucent : 1;     //窗口的半透明属性
+    DWORD m_bAutoShape: 1;        //auto build shape for translucent window (valid for linux)
     DWORD m_bAllowSpy : 1;        //允许spy
     DWORD m_bSendWheel2Hover : 1; //将滚轮消息发送到hover窗口
     DWORD m_bHasMsgLoop : 1;      //窗口有的MsgLoop标志，主要影响tooltip的RelayEvent时机

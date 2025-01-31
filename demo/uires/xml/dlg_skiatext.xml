@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SOUI trCtx="dlg_file res" title="test" appWnd="0" resizable="0" translucent="1">
+<SOUI trCtx="dlg_file res" title="test" appWnd="0" resizable="0" translucent="1" autoShape="1">
   <root size="300,50">
     <caption pos="0,0,-0,-0">
       <scrolltext pos="0,0,-0,-0" font="style:StrokeAndFill,blurStyle:solid,blurRadius:3,adding:5 " msgTransparent="1" colorText="@color/red">

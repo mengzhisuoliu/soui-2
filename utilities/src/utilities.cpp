@@ -1,12 +1,12 @@
-﻿#include "utilities.h"
-#include "string/strcpcvt.h"
-#include "xml/SXml.h"
+﻿#include <utilities.h>
+#include <string/strcpcvt.h>
+#include <xml/SXml.h>
+#include <souicoll.h>
 #include <tchar.h>
 #ifdef _WIN32
 #include <shlwapi.h>
 #pragma comment(lib,"shlwapi.lib")
 #pragma comment(lib, "version.lib")
-
 #else
 #include <strapi.h>
 #include <sys/mman.h>
@@ -314,6 +314,48 @@ HANDLE LoadIconFromMemory(const void* buf, UINT cbSize, BOOL fIcon, int width, i
     return LoadImageBuf(buf, cbSize, type, width, height, cFlag);
 }
 
+
+
+HRGN CreateRegionFromBitmap(HBITMAP hBmp, COLORREF crKey,COLORREF crMask)
+{
+    BITMAP bm={0};
+    GetObject(hBmp,sizeof(bm),&bm);
+    if(bm.bmBitsPixel!=32 || bm.bmBits==0)
+        return 0;
+            // 获取图像表面的数据指针
+        const COLORREF *bits = (const COLORREF *)bm.bmBits;
+
+        SNS::SArray<RECT> lstRc;
+        for (int y = 0; y < bm.bmHeight; y++, bits += bm.bmWidth)
+        {
+            int x = 0;
+            while (x < bm.bmWidth)
+            {
+                while (x < bm.bmWidth && (bits[x] & crMask) == crKey)
+                    x++;
+                int start = x;
+                while (x < bm.bmWidth && (bits[x] & crMask) != crKey)
+                    x++;
+                if (start != x)
+                {
+                    RECT rc = { start, y, x, y + 1 };
+                    lstRc.Add(rc);
+                }
+            }
+        }
+        if (!lstRc.IsEmpty())
+        {
+            int len = sizeof(RGNDATAHEADER) + sizeof(RECT) * lstRc.GetCount();
+            RGNDATA *pRgn = (RGNDATA *)malloc(len);
+            pRgn->rdh.nCount = lstRc.GetCount();
+            pRgn->rdh.iType = RDH_RECTANGLES;
+            memcpy(pRgn->Buffer, lstRc.GetData(), sizeof(RECT) * lstRc.GetCount());
+            HRGN hRgn = ExtCreateRegion(nullptr, len, pRgn);
+            free(pRgn);
+            return hRgn;
+        }
+    return 0;
+}
 
 BOOL IsFilePathValid(LPCTSTR strPath) {
     DWORD dwAttr = ::GetFileAttributes(strPath);

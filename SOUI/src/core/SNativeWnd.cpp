@@ -645,6 +645,7 @@ BOOL SNativeWnd::ModifyStyle(DWORD dwRemove, DWORD dwAdd, UINT nFlags /*= 0*/)
 
 BOOL SNativeWnd::ModifyStyleEx(DWORD dwRemove, DWORD dwAdd, UINT nFlags /*= 0*/)
 {
+    //todo:hjx to support ws_ex_composite change during running.
     SASSERT(::IsWindow(m_hWnd));
 
     DWORD dwStyle = (DWORD)::GetWindowLongPtr(m_hWnd, GWL_EXSTYLE);
