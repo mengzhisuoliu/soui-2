@@ -176,8 +176,9 @@ protected:
 
     // 只执行一次
     static LRESULT CALLBACK StartWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-
+    #if defined(ENABLE_THUNK) || defined(_WIN32)
     tagThunk* m_pThunk;
+    #endif
     WNDPROC m_pfnSuperWindowProc;
 };
 

@@ -225,7 +225,9 @@ SNativeWnd::SNativeWnd()
     , m_pCurrentMsg(NULL)
     , m_hWnd(0)
     , m_pfnSuperWindowProc(::DefWindowProc)
+    #if defined(ENABLE_THUNK) || defined(_WIN32)
     , m_pThunk(NULL)
+    #endif
 {
     m_msgHandlerInfo.fun = NULL;
     m_msgHandlerInfo.ctx = NULL;
@@ -256,15 +258,18 @@ void SNativeWnd::InitWndClass(HINSTANCE hInst, LPCTSTR pszSimpleWndName, BOOL bI
 HWND SNativeWnd::CreateNative(LPCTSTR lpWindowName, DWORD dwStyle, DWORD dwExStyle, int x, int y, int nWidth, int nHeight, HWND hWndParent, int nID, LPVOID lpParam)
 {
     SNativeWndHelper::instance()->LockSharePtr(this);
-
+    #if defined(ENABLE_THUNK) || defined(_WIN32)
     m_pThunk = (tagThunk *)HeapAlloc(SNativeWndHelper::instance()->GetHeap(), HEAP_ZERO_MEMORY|HEAP_CREATE_ENABLE_EXECUTE, sizeof(tagThunk));
+    #endif
     HWND hWnd = ::CreateWindowEx(dwExStyle, (LPCTSTR)(UINT_PTR)SNativeWndHelper::instance()->GetSimpleWndAtom(), lpWindowName, dwStyle, x, y, nWidth, nHeight, hWndParent, (HMENU)(UINT_PTR)nID, SNativeWndHelper::instance()->GetAppInstance(), lpParam);
     SNativeWndHelper::instance()->UnlockSharePtr();
+    #if defined(ENABLE_THUNK) || defined(_WIN32)
     if (!hWnd)
     {
         HeapFree(SNativeWndHelper::instance()->GetHeap(), 0, m_pThunk);
         m_pThunk = NULL;
     }
+    #endif
     return hWnd;
 }
 
@@ -275,11 +280,13 @@ HWND SNativeWnd::GetHwnd()
 
 void SNativeWnd::OnFinalMessage(HWND hWnd)
 {
+    #if defined(ENABLE_THUNK) || defined(_WIN32)
     if (m_pThunk)
     {
         HeapFree(SNativeWndHelper::instance()->GetHeap(), 0, m_pThunk);
         m_pThunk = NULL;
     }
+    #endif
     m_hWnd = 0;
 }
 
@@ -361,14 +368,21 @@ BOOL SNativeWnd::SubclassWindow(HWND hWnd)
 {
     SASSERT(::IsWindow(hWnd));
     // Allocate the thunk structure here, where we can fail gracefully.
+    #if defined(ENABLE_THUNK) || defined(_WIN32)
     m_pThunk = (tagThunk *)HeapAlloc(SNativeWndHelper::instance()->GetHeap(), HEAP_ZERO_MEMORY | HEAP_CREATE_ENABLE_EXECUTE, sizeof(tagThunk));
     m_pThunk->Init((DWORD_PTR)WindowProc, this);
     WNDPROC pProc = (WNDPROC)m_pThunk->GetCodeAddress();
+    #else
+    ::SetWindowLongPtr(hWnd,GWLP_OPAQUE,(LONG_PTR)this);
+    WNDPROC pProc = WindowProc;
+    #endif
     WNDPROC pfnWndProc = (WNDPROC)::SetWindowLongPtr(hWnd, GWLP_WNDPROC, (LONG_PTR)pProc);
     if (pfnWndProc == NULL)
     {
+        #if defined(ENABLE_THUNK) || defined(_WIN32)
         HeapFree(SNativeWndHelper::instance()->GetHeap(), 0, m_pThunk);
         m_pThunk = NULL;
+        #endif
         return FALSE;
     }
     m_pfnSuperWindowProc = pfnWndProc;
@@ -380,7 +394,11 @@ HWND SNativeWnd::UnsubclassWindow(BOOL bForce /*= FALSE*/)
 {
     SASSERT(m_hWnd != 0);
 
+    #if defined(ENABLE_THUNK) || defined(_WIN32)
     WNDPROC pOurProc = (WNDPROC)m_pThunk->GetCodeAddress();
+    #else
+    WNDPROC pOurProc = WindowProc;
+    #endif
     WNDPROC pActiveProc = (WNDPROC)::GetWindowLongPtr(m_hWnd, GWLP_WNDPROC);
 
     HWND hWnd = 0;
@@ -388,7 +406,9 @@ HWND SNativeWnd::UnsubclassWindow(BOOL bForce /*= FALSE*/)
     {
         if (!::SetWindowLongPtr(m_hWnd, GWLP_WNDPROC, (LONG_PTR)m_pfnSuperWindowProc))
             return 0;
-
+        #if !defined(ENABLE_THUNK) && !defined(_WIN32)
+        ::SetWindowLongPtr(m_hWnd, GWLP_OPAQUE, (LONG_PTR)0);
+        #endif
         m_pfnSuperWindowProc = ::DefWindowProc;
         hWnd = m_hWnd;
         m_hWnd = 0;
