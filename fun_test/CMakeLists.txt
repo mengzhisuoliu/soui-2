@@ -28,7 +28,7 @@ target_include_directories(fun_test
 target_link_libraries(fun_test utilities4 gtest soui4 Scintilla)
 if (NOT CMAKE_SYSTEM_NAME MATCHES Windows)
     add_dependencies(fun_test swinx)
-    target_link_libraries(fun_test swinx pthread xcb xcb-util dl)
+    target_link_libraries(fun_test swinx  dl)
 else()
     target_link_libraries(fun_test Msimg32 imm32)
 endif()

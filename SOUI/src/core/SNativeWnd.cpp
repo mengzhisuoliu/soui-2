@@ -285,7 +285,11 @@ void SNativeWnd::OnFinalMessage(HWND hWnd)
 
 LRESULT CALLBACK SNativeWnd::WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
+    #if defined(ENABLE_THUNK) || defined(_WIN32)
     SNativeWnd *pThis = (SNativeWnd *)hWnd;
+    #else
+    SNativeWnd *pThis = (SNativeWnd *)::GetWindowLongPtr(hWnd,GWLP_OPAQUE);
+    #endif
     MSG msg = { pThis->m_hWnd, uMsg, wParam, lParam };
     const MSG* pOldMsg = pThis->m_pCurrentMsg;
     pThis->m_pCurrentMsg = &msg;
@@ -340,13 +344,17 @@ LRESULT CALLBACK SNativeWnd::StartWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam
     SNativeWnd *pThis = (SNativeWnd *)SNativeWndHelper::instance()->GetSharePtr();
     SNativeWndHelper::instance()->UnlockSharePtr();
     pThis->m_hWnd = hWnd;
+    #if defined(ENABLE_THUNK) || defined(_WIN32)
     // 初始化Thunk，做了两件事:1、mov指令替换hWnd为对象指针，2、jump指令跳转到WindowProc
     pThis->m_pThunk->Init((DWORD_PTR)WindowProc, pThis);
     // 得到Thunk指针
     WNDPROC pProc = (WNDPROC)pThis->m_pThunk->GetCodeAddress();
     // 调用下面的语句后，以后消息来了，都由pProc处理
     ::SetWindowLongPtr(hWnd, GWLP_WNDPROC, (LONG_PTR)pProc); 
-    return pProc(hWnd, uMsg, wParam, lParam);
+    #else
+    ::SetWindowLongPtr(hWnd,GWLP_OPAQUE,(ULONG_PTR)pThis);
+    #endif//ENABLE_THUNK
+    return WindowProc(hWnd, uMsg, wParam, lParam);
 }
 
 BOOL SNativeWnd::SubclassWindow(HWND hWnd)

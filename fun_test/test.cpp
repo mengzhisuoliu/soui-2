@@ -30,10 +30,7 @@
 #include <thread>
 #endif
 
-#ifndef _WIN32
-#include <cairo/cairo-xcb.h>
-#include <xcb/xcb_aux.h>
-#endif//_WIN32
+
 #include "../components/resprovider-zip/zipresprovider-param.h"
 #include <helper/SFunctor.hpp>
 #include <helper/SMenu.h>
