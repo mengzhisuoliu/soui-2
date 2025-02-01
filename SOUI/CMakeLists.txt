@@ -8,6 +8,12 @@
 
 add_definitions(-DSOUI_EXPORTS -D_CRT_SECURE_NO_WARNINGS)
 
+option(ENABLE_THUNK "Enable Thunk" ON)
+
+if(${ENABLE_THUNK})
+add_definitions(-DENABLE_THUNK)
+endif()
+
 file(GLOB_RECURSE CURRENT_HEADERS  *.h *.hpp)
 file(GLOB_RECURSE CURRENT_SRCS  *.cpp)
 file(GLOB_RECURSE CURRENT_UIRES  *.xml *.idx *.ico)

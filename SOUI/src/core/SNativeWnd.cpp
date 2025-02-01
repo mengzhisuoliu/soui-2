@@ -360,6 +360,7 @@ LRESULT CALLBACK SNativeWnd::StartWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam
     ::SetWindowLongPtr(hWnd, GWLP_WNDPROC, (LONG_PTR)pProc); 
     #else
     ::SetWindowLongPtr(hWnd,GWLP_OPAQUE,(ULONG_PTR)pThis);
+    ::SetWindowLongPtr(hWnd,GWLP_WNDPROC,(ULONG_PTR)WindowProc);
     #endif//ENABLE_THUNK
     return WindowProc(hWnd, uMsg, wParam, lParam);
 }

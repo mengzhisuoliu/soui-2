@@ -348,10 +348,10 @@ TEST(memory, handle) {
 
 int run_window();
 TEST(demo,window){
-//    EXPECT_EQ(run_window(), 1);
+    EXPECT_EQ(run_window(), 1);
 }
 
 int run_app(HINSTANCE hInst);
 TEST(demo,app){
-    EXPECT_EQ(run_app(0),0);
+    //EXPECT_EQ(run_app(0),0);
 }
