@@ -9,7 +9,7 @@
 add_definitions(-DSOUI_EXPORTS -D_CRT_SECURE_NO_WARNINGS)
 
 if (CMAKE_SYSTEM_NAME MATCHES Windows)
-option(ENABLE_THUNK "Enable Thunk" ON)
+set(ENABLE_THUNK ON)
 else()
 option(ENABLE_THUNK "Enable Thunk" OFF)
 endif()

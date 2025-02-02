@@ -32,7 +32,7 @@ SNSBEGIN
 
 class SOUI_EXP SHostWndAttr : public TObjRefImpl<SObject> {
     DEF_SOBJECT(TObjRefImpl<SObject>, L"SHostWndAttr")
-    enum
+    enum WndType
     {
         WT_UNDEFINE = 0,
         WT_APPMAIN = 1,
@@ -81,11 +81,11 @@ class SOUI_EXP SHostWndAttr : public TObjRefImpl<SObject> {
         ATTR_ICON(L"bigIcon", m_hAppIconBig, FALSE)
         ATTR_BOOL(L"allowSpy", m_bAllowSpy, FALSE)
         ATTR_BOOL(L"hasMsgLoop", m_bHasMsgLoop, FALSE)
-        ATTR_ENUM_BEGIN(L"wndType", DWORD, FALSE)
+        ATTR_ENUM_BEGIN(L"wndType", WndType, FALSE)
             ATTR_ENUM_VALUE(L"undefine", WT_UNDEFINE)
             ATTR_ENUM_VALUE(L"appMain", WT_APPMAIN)
             ATTR_ENUM_VALUE(L"normal", WT_NORMAL)
-        ATTR_ENUM_END(m_byWndType)
+        ATTR_ENUM_END(m_wndType)
     SOUI_ATTRS_END()
 
   protected:
@@ -94,15 +94,15 @@ class SOUI_EXP SHostWndAttr : public TObjRefImpl<SObject> {
     SLayoutSize m_rcMaxInset[4]; //窗口最大化时超出屏幕的边缘大小。经测试，WS_OVERLAPPED
                                  // style的窗口该属性无效
 
-    DWORD m_byWndType : 8;        //主窗口标志,有该标志的窗口关闭时自动发送WM_QUIT
-    DWORD m_bResizable : 1;       //窗口大小可调节
-    DWORD m_bAppWnd : 1;          // APP窗口，在任务栏上显示按钮
-    DWORD m_bToolWnd : 1;         //设置WS_ES_TOOLWINDOW属性
-    DWORD m_bTranslucent : 1;     //窗口的半透明属性
-    DWORD m_bAutoShape: 1;        //auto build shape for translucent window (valid for linux)
-    DWORD m_bAllowSpy : 1;        //允许spy
-    DWORD m_bSendWheel2Hover : 1; //将滚轮消息发送到hover窗口
-    DWORD m_bHasMsgLoop : 1;      //窗口有的MsgLoop标志，主要影响tooltip的RelayEvent时机
+    WndType m_wndType;      // 主窗口标志,有该标志的窗口关闭时自动发送WM_QUIT
+    BOOL m_bResizable;       //窗口大小可调节
+    BOOL m_bAppWnd ;       // APP窗口，在任务栏上显示按钮
+    BOOL m_bToolWnd ;     // 设置WS_ES_TOOLWINDOW属性
+    BOOL m_bTranslucent;  // 窗口的半透明属性
+    BOOL m_bAutoShape;   // auto build shape for translucent window (valid for linux)
+    BOOL m_bAllowSpy;     // 允许spy
+    BOOL m_bSendWheel2Hover; // 将滚轮消息发送到hover窗口
+    BOOL m_bHasMsgLoop;      // 窗口有的MsgLoop标志，主要影响tooltip的RelayEvent时机
     DWORD m_dwStyle;
     DWORD m_dwExStyle;
 

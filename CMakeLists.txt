@@ -10,11 +10,11 @@
 
 # mkdir build
 # cd build 
-# cmake .. -G"NMake Makefiles" -DCMAKE_BUILD_TYPE=Release
+# cmake .. -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release
 # nmake
 #
 # or 
-# cmake .. -G"Visual Studio 14 2015"
+# cmake .. -G "Visual Studio 14 2015"
 # 
 # 生成SOUI.sln工程文件
 #   

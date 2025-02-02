@@ -326,13 +326,21 @@ LRESULT CMainDlg::OnInitDialog( HWND hWnd, LPARAM lParam )
     FindChildByID(R.id.txt_title)->SetWindowText(S_CW2T(GetRoot()->tr(strTitle)));
     
     //演示在SOUI中的拖放
-	SEdit *pEdit1 = FindChildByName2<SEdit>(L"edit_drop_top");
-    if(pEdit1)
-    {
-        HRESULT hr=::RegisterDragDrop(m_hWnd,GetDropTarget());
-        RegisterDragDrop(pEdit1->GetSwnd(),new CTestDropTarget1(pEdit1));
-    }
-    
+    HRESULT hr=::RegisterDragDrop(m_hWnd,GetDropTarget());
+	{
+		SEdit *pEdit1 = FindChildByName2<SEdit>(L"edit_drop_top1");
+		if(pEdit1)
+		{
+			RegisterDragDrop(pEdit1->GetSwnd(),new CTestDropTarget1(pEdit1));
+		}
+	}
+	{
+		SEdit *pEdit1 = FindChildByName2<SEdit>(L"edit_drop_top2");
+		if(pEdit1)
+		{
+			RegisterDragDrop(pEdit1->GetSwnd(),new CTestDropTarget1(pEdit1));
+		}
+	}
     SRichEdit *pEdit = FindChildByName2<SRichEdit>(L"re_gifhost");
     if(pEdit)
     {

@@ -5,7 +5,11 @@
 SNSBEGIN
 
 #ifndef ENABLE_THUNK
+#ifdef _WIN32
+#define ENABLE_THUNK 1
+#else
 #define ENABLE_THUNK 0
+#endif//_WIN32
 #endif//ENABLE_THUNK
 
 //////////////////////////////////////////////////////////////////////////

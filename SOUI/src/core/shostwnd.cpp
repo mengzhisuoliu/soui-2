@@ -75,7 +75,7 @@ void SHostWndAttr::Init()
     m_bAutoShape = FALSE;
     m_bAppWnd = FALSE;
     m_bToolWnd = FALSE;
-    m_byWndType = WT_UNDEFINE;
+    m_wndType = WT_UNDEFINE;
     m_bAllowSpy = TRUE;
     m_bSendWheel2Hover = FALSE;
     m_bHasMsgLoop = TRUE;
@@ -916,7 +916,7 @@ void SHostWnd::OnDestroy()
 
     SHostMgr::getSingletonPtr()->RemoveHostMsgHandler(m_hWnd);
     // exit app. (copy from wtl)
-    if (m_hostAttr.m_byWndType == SHostWndAttr::WT_APPMAIN || (m_hostAttr.m_byWndType == SHostWndAttr::WT_UNDEFINE && (SNativeWnd::GetStyle() & (WS_CHILD | WS_POPUP)) == 0 && (SNativeWnd::GetExStyle() & WS_EX_TOOLWINDOW) == 0))
+    if (m_hostAttr.m_wndType == SHostWndAttr::WT_APPMAIN || (m_hostAttr.m_wndType == SHostWndAttr::WT_UNDEFINE && (SNativeWnd::GetStyle() & (WS_CHILD | WS_POPUP)) == 0 && (SNativeWnd::GetExStyle() & WS_EX_TOOLWINDOW) == 0))
         GetMsgLoop()->Quit(1);
 }
 
@@ -930,6 +930,7 @@ void SHostWnd::OnSize(UINT nType, CSize size)
         return;
     
     BOOL bSizeChange = size != m_szPrev;
+    SSLOGI()<<"on host size,szPrev="<<m_szPrev.cx<<","<<m_szPrev.cy<<" size="<<size.cx<<","<<size.cy<<" sizeChange="<<bSizeChange;
     if(bSizeChange)
     {
         if (m_nAutoSizing == 0)

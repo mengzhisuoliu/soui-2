@@ -25,7 +25,7 @@ add_dependencies(fun_test utilities4 gtest soui4 resprovider-zip log4z  render-g
 target_include_directories(fun_test 
     PUBLIC ${PROJECT_SOURCE_DIR}/third-part/Scintilla/include
 )
-target_link_libraries(fun_test utilities4 gtest soui4 Scintilla)
+target_link_libraries(fun_test utilities4 gtest pthread soui4 Scintilla)
 if (NOT CMAKE_SYSTEM_NAME MATCHES Windows)
     add_dependencies(fun_test swinx)
     target_link_libraries(fun_test swinx  dl)
