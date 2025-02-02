@@ -19,7 +19,7 @@
 
 SNSBEGIN
 
-SOUI_EXP SObjectInfo ObjInfo_New(LPCWSTR name, int type, LPCWSTR alise=NULL);
+SOUI_EXP SObjectInfo ObjInfo_New(LPCWSTR name, int type, LPCWSTR alise = NULL);
 
 SOUI_EXP BOOL ObjInfo_IsValid(const SObjectInfo *pObjInfo);
 

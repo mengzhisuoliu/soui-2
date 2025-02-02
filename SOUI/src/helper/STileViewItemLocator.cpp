@@ -4,7 +4,7 @@
 SNSBEGIN
 //////////////////////////////////////////////////////////////////////////
 // STileViewItemLocatorFix
-STileViewItemLocator::STileViewItemLocator(SWindow* owner, int nItemHei, int nItemWid, int nMarginSize /*= 0*/)
+STileViewItemLocator::STileViewItemLocator(SWindow *owner, int nItemHei, int nItemWid, int nMarginSize /*= 0*/)
     : m_nItemHeight((float)nItemHei, SLayoutSize::px)
     , m_nItemWidth((float)nItemWid, SLayoutSize::px)
     , m_nItemMargin((float)nMarginSize, SLayoutSize::px)
@@ -14,7 +14,7 @@ STileViewItemLocator::STileViewItemLocator(SWindow* owner, int nItemHei, int nIt
 {
 }
 
-STileViewItemLocator::STileViewItemLocator(SWindow* owner, LPCWSTR szItemHei, LPCWSTR szItemWid, SLayoutSize marginSize)
+STileViewItemLocator::STileViewItemLocator(SWindow *owner, LPCWSTR szItemHei, LPCWSTR szItemWid, SLayoutSize marginSize)
     : m_nItemHeight(GETLAYOUTSIZE(szItemHei))
     , m_nItemWidth(GETLAYOUTSIZE(szItemWid))
     , m_nItemMargin(marginSize)
@@ -117,10 +117,12 @@ RECT STileViewItemLocator::GetItemRect(int iItem)
     rect.right = rect.left + m_nItemWidth.toPixelSize(m_scale);
     rect.bottom = rect.top + m_nItemHeight.toPixelSize(m_scale);
 
-    if ((m_pOwner->GetStyle().GetAlign() & SwndStyle::Align_MaskX) != SwndStyle::Align_Left) {
+    if ((m_pOwner->GetStyle().GetAlign() & SwndStyle::Align_MaskX) != SwndStyle::Align_Left)
+    {
         CRect rcClient = m_pOwner->GetClientRect();
-        int totalWid = m_nItemWidth.toPixelSize(m_scale) * m_nCountInRow + (margin+1)* m_nCountInRow;
-        switch (m_pOwner->GetStyle().GetAlign() & SwndStyle::Align_MaskX) {
+        int totalWid = m_nItemWidth.toPixelSize(m_scale) * m_nCountInRow + (margin + 1) * m_nCountInRow;
+        switch (m_pOwner->GetStyle().GetAlign() & SwndStyle::Align_MaskX)
+        {
         case SwndStyle::Align_Center:
             rect.OffsetRect((rcClient.Width() - totalWid) / 2, 0);
             break;

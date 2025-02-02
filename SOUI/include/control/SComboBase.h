@@ -374,7 +374,7 @@ class SOUI_EXP SComboBase
             return SStringT();
         }
     }
-    SEdit *m_pEdit;               /**< SRichEdit指针 */
+    SEdit *m_pEdit;                   /**< SRichEdit指针 */
     DWORD m_dwBtnState;               /**< 按钮状态      */
     SAutoRefPtr<ISkinObj> m_pSkinBtn; /**< 按钮资源      */
 

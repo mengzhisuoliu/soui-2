@@ -215,7 +215,7 @@ __time64_t STime::GetTime() const
 int STime::GetYear() const
 {
     struct tm *ptm = localtime(&m_time);
-    return ptm? (ptm->tm_year + 1900):0;
+    return ptm ? (ptm->tm_year + 1900) : 0;
 }
 
 int STime::GetMonth() const

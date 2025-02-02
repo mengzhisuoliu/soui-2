@@ -46,7 +46,7 @@
 #define STVI_FIRST ((HSTREEITEM)0xFFFF0001) //=TVI_FIRST
 #define STVI_LAST  ((HSTREEITEM)0xFFFF0002) //=TVI_LAST
 #endif
-#endif//STVI_ROOT
+#endif // STVI_ROOT
 
 /**
  * @class      CSTree 模板类
@@ -103,6 +103,7 @@ class CSTree {
     {
         virtual void OnDataFree(T &data) = 0;
     };
+
   public:
     /**
      * CSTree::CSTree
@@ -703,10 +704,11 @@ class CSTree {
         }
     }
 
-    void SetDataFreer(IDataFreer * cbFree)
+    void SetDataFreer(IDataFreer *cbFree)
     {
         m_dataFreer = cbFree;
     }
+
   private:
     /**
      * CSTree::FreeNode

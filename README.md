@@ -113,6 +113,9 @@ CMake, Vcxsvr(https://sourceforge.net/projects/vcxsrv/files/vcxsrv/21.1.10/vcxsr
 ##  **linux 内存泄漏检测** 
 valgrind --leak-check=full ./your_program
 
+## **贡献名单**
+参见[贡献名单](./contibutors.md)
+
 ##  **LICENSE** 
 
 请查看[`license.txt`](./license.txt)文档

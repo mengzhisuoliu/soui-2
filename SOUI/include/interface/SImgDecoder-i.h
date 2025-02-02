@@ -43,8 +43,8 @@ DECLARE_INTERFACE_(IImgFrame, IObjRef)
      * @return   const VOID *  pixels buffer ptr
      * Describe
      */
-    STDMETHOD_(const VOID *,GetPixels)(CTHIS) SCONST PURE;
-    
+    STDMETHOD_(const VOID *, GetPixels)(CTHIS) SCONST PURE;
+
     /**
      * GetDelay
      * @brief    get delay for a frame of a gif image

@@ -404,9 +404,9 @@ DECLARE_INTERFACE_(ITvDataSetObserver, IObjRef)
     (THIS_ HSTREEITEM hItem) PURE;
 };
 
-#define ITEM_NULL 0
-#define ITEM_ROOT STVI_ROOT
-#define ITEM_LAST STVI_LAST
+#define ITEM_NULL  0
+#define ITEM_ROOT  STVI_ROOT
+#define ITEM_LAST  STVI_LAST
 #define ITEM_FIRST STVI_FIRST
 
 typedef enum DATA_INDEX

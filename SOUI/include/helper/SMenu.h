@@ -9,7 +9,6 @@
 
 SNSBEGIN
 
-
 #define CX_ICON 16 //支持的图标的宽度
 #define CY_ICON 16 //支持的图标的高度
 

@@ -28,7 +28,8 @@ SwndStyle::SwndStyle()
     }
 }
 
-UINT SwndStyle::GetAlign() const {
+UINT SwndStyle::GetAlign() const
+{
     return m_uAlign | m_uVAlign;
 }
 

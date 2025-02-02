@@ -35,7 +35,7 @@ SNSBEGIN
     static LPCWSTR GetClassName()      \
     {                                  \
         return WIDESTR(clsName);       \
-    }\
+    }                                  \
     static LPCWSTR GetClassAlias()     \
     {                                  \
         return NULL;                   \
@@ -77,9 +77,9 @@ SNSBEGIN
         if (wcscmp(GetClassName(), lpszName) == 0)      \
             return TRUE;                                \
         return __baseCls::IsClass(lpszName);            \
-    }                                                   
-                                                        
-#define DEF_SOBJECT(baseCls, clsName) DEF_SOBJECT_EX(baseCls,clsName,NULL)
+    }
+
+#define DEF_SOBJECT(baseCls, clsName) DEF_SOBJECT_EX(baseCls, clsName, NULL)
 
 typedef struct IObject IObject;
 

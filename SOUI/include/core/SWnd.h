@@ -447,9 +447,9 @@ class SOUI_EXP SWindow
     STDMETHOD_(void, SetCaretPos)(THIS_ int x, int y) OVERRIDE;
 
   public:
-  #ifdef _WIN32
+#ifdef _WIN32
     IAccessible *GetAccessible();
-  #endif
+#endif
     IAccProxy *GetAccProxy();
     void accNotifyEvent(DWORD dwEvt);
 
@@ -1062,7 +1062,7 @@ class SOUI_EXP SWindow
     void OnLButtonDown(UINT nFlags, CPoint pt);
 
     void OnLButtonDbClick(UINT nFlags, CPoint point);
-    
+
     void OnLButtonUp(UINT nFlags, CPoint pt);
 
     void OnRButtonDown(UINT nFlags, CPoint point);

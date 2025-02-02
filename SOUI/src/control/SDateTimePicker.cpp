@@ -97,7 +97,7 @@ void SDateTimePicker::OnCreateDropDown(SDropDownWnd *pDropDown)
     pDropDown->GetRoot()->InsertChild(m_pCalendar);
     pDropDown->GetRoot()->UpdateChildrenPosition();
     CRect rc = m_pCalendar->GetWindowRect();
-    SSLOGI()<<"rc="<<rc.left<<","<<rc.top<<","<<rc.right<<","<<rc.bottom;
+    SSLOGI() << "rc=" << rc.left << "," << rc.top << "," << rc.right << "," << rc.bottom;
     m_pCalendar->SetVisible(TRUE);
     m_pCalendar->SetFocus();
 
@@ -422,7 +422,9 @@ void SDateTimePicker::OnLButtonDown(UINT nFlags, CPoint pt)
         {
             m_eSelDateType = eSelType;
         }
-    }else{
+    }
+    else
+    {
         m_eSelDateType = eDT_NULL;
         DropDown();
     }
@@ -664,7 +666,8 @@ void SDateTimePicker::CloseUp()
     if (NULL != m_pDropDownWnd)
     {
         m_pDropDownWnd->EndDropDown(IDCANCEL);
-        if(m_eSelDateType == eDT_NULL){
+        if (m_eSelDateType == eDT_NULL)
+        {
             ReleaseCapture();
         }
     }

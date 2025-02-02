@@ -581,7 +581,8 @@ SMenuEx::~SMenuEx(void)
     DestroyMenu();
 }
 
-SRootWindow* SMenuEx::CreateRoot() {
+SRootWindow *SMenuEx::CreateRoot()
+{
     return new SMenuExRoot(this);
 }
 
@@ -601,7 +602,7 @@ BOOL SMenuEx::LoadMenuU8(THIS_ LPCSTR resId)
     return LoadMenu(strResId);
 }
 
-BOOL SMenuEx::OnLoadLayoutFromResourceID(SXmlDoc& souiXml)
+BOOL SMenuEx::OnLoadLayoutFromResourceID(SXmlDoc &souiXml)
 {
     return TRUE;
 }
@@ -621,7 +622,7 @@ BOOL SMenuEx::LoadMenu2(IXmlNode *xmlMenu)
         root.append_attribute(L"trCtx").set_value(xmlNode.attribute(L"trCtx").value());
     }
 
-    HWND hWnd = CreateEx(NULL, WS_POPUP, WS_EX_TOOLWINDOW | WS_EX_TOPMOST | WS_EX_NOACTIVATE, 0, 0, 0, 0,&root);
+    HWND hWnd = CreateEx(NULL, WS_POPUP, WS_EX_TOOLWINDOW | WS_EX_TOPMOST | WS_EX_NOACTIVATE, 0, 0, 0, 0, &root);
     if (!hWnd)
         return FALSE;
 

@@ -114,26 +114,25 @@ SNSEND
 #define FUNCNAME __FUNCTION__
 #else
 #define FUNCNAME __PRETTY_FUNCTION__
-#endif//_WIN32
+#endif //_WIN32
 
 #define SLOG(tag, level) SOUI::Log(tag, level, __FILE__, FUNCNAME, __LINE__, RetAddr()).stream()
-#define SLOG_FMT(tag, level, logformat, ...)                                                    \
-    do                                                                                          \
-    {                                                                                           \
-        if (sizeof(logformat[0]) == sizeof(char))                                               \
-        {                                                                                       \
-            char logbuf[SOUI::Log::MAX_LOGLEN] = { 0 };                                         \
+#define SLOG_FMT(tag, level, logformat, ...)                                                      \
+    do                                                                                            \
+    {                                                                                             \
+        if (sizeof(logformat[0]) == sizeof(char))                                                 \
+        {                                                                                         \
+            char logbuf[SOUI::Log::MAX_LOGLEN] = { 0 };                                           \
             _snprintf(logbuf, SOUI::Log::MAX_LOGLEN, (const char *)logformat, ##__VA_ARGS__);     \
-            SLOG(tag, level) << logbuf;                                                         \
-        }                                                                                       \
-        else                                                                                    \
-        {                                                                                       \
-            wchar_t logbuf[SOUI::Log::MAX_LOGLEN] = { 0 };                                      \
+            SLOG(tag, level) << logbuf;                                                           \
+        }                                                                                         \
+        else                                                                                      \
+        {                                                                                         \
+            wchar_t logbuf[SOUI::Log::MAX_LOGLEN] = { 0 };                                        \
             _snwprintf(logbuf, SOUI::Log::MAX_LOGLEN, (const wchar_t *)logformat, ##__VA_ARGS__); \
-            SLOG(tag, level) << logbuf;                                                         \
-        }                                                                                       \
+            SLOG(tag, level) << logbuf;                                                           \
+        }                                                                                         \
     } while (false);
-
 
 //流式输出日志，当kLogTag有效时使用，否则编译失败，kLogTag可以是当前定义的宏，也可以是当前对象的成员变量。
 #define SLOGD() SLOG(kLogTag, SOUI::LOG_LEVEL_DEBUG)

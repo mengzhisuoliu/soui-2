@@ -408,6 +408,7 @@ class STreeAdapterBase : public TObjRefImpl<TvAdatperImpl<ITvAdapter>> {
                 m_dataFreer(data.data);
         }
     };
+
   public:
     STreeAdapterBase()
     {
@@ -694,6 +695,7 @@ class STreeAdapterBase : public TObjRefImpl<TvAdatperImpl<ITvAdapter>> {
     {
         m_treeFreer.m_dataFreer = freer;
     }
+
   protected:
     CSTree<ItemInfo> m_tree;
     TreeDataFreer m_treeFreer;

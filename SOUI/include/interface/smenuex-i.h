@@ -176,8 +176,8 @@ DECLARE_INTERFACE_(IMenuEx, IObjRef)
     /**
      * @brief get hostwnd ptr
      * @return IHostWnd*
-    */
-    STDMETHOD_(IHostWnd*, GetHostWnd)(THIS) PURE;
+     */
+    STDMETHOD_(IHostWnd *, GetHostWnd)(THIS) PURE;
 };
 
 EXTERN_C void SOUI_EXP EndMenuEx(int nCmdId);

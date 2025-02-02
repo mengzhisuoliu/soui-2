@@ -39,10 +39,10 @@
 
 #define IUNKNOWN_ADD_IID(iface) IUNKNOWN_ADD_IID2(__suidof(iface), iface)
 
-template<class T>
-class  SUnkImpl : public T{
+template <class T>
+class SUnkImpl : public T {
   public:
-      SUnkImpl()
+    SUnkImpl()
         : m_cRef(1)
     {
     }

@@ -221,15 +221,18 @@ void SOsrPanel::UpdateTooltip()
 {
     return m_pHostProxy->GetHostContainer()->UpdateTooltip();
 }
-void SOsrPanel::SetToolTip(LPCRECT rc, UINT tipAlign, LPCTSTR pszTip) {
-    if (rc) {
+void SOsrPanel::SetToolTip(LPCRECT rc, UINT tipAlign, LPCTSTR pszTip)
+{
+    if (rc)
+    {
         CRect rc2;
         m_pItemContainer->OnItemGetRect(this, rc2);
         rc2.OffsetRect(rc->left, rc->top);
-        return m_pHostProxy->GetHostContainer()->SetToolTip(&rc2,tipAlign, pszTip);
+        return m_pHostProxy->GetHostContainer()->SetToolTip(&rc2, tipAlign, pszTip);
     }
-    else {
-        return m_pHostProxy->GetHostContainer()->SetToolTip(rc,tipAlign, pszTip);
+    else
+    {
+        return m_pHostProxy->GetHostContainer()->SetToolTip(rc, tipAlign, pszTip);
     }
 }
 
