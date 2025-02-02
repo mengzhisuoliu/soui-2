@@ -18,6 +18,7 @@
 |隨心所鈺|727300353||
 |Yecate|yecate@qq.com|解决soui4js的vscode调试|
 |小新|85703533||
+|指尖|229259139|开发souieditor第一版|
 
 ## 备注
 以上名单自动获取soui终身免费授权，未在名单中标注的满足license.md授权的朋友联系作者补上。
