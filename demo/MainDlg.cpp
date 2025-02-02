@@ -536,35 +536,14 @@ void CMainDlg::OnCommand( UINT uNotifyCode, int nID, HWND wndCtl )
 {
     if(uNotifyCode==0)
     {
-        if(nID == 7)
-        {
-            if(GetRoot()->GetColorizeColor()==0) GetRoot()->DoColorize(RGB(255,255,0));//将图片调整为粉红
-            else GetRoot()->DoColorize(0);//恢复
-        }
-        else if(nID==6)
+        if(nID==6)
         {//nID==6对应menu_test定义的菜单的exit项。
             PostMessage(WM_CLOSE);
-        }else if(nID==54)
+        }else if(nID==5)
         {//about SOUI
             STabCtrl *pTabCtrl = FindChildByName2<STabCtrl>(L"tab_main");
             if(pTabCtrl) pTabCtrl->SetCurSel(_T("about"));
 		}
-		else if (nID == 51)
-		{//skin1
-			SSkinLoader::getSingleton().LoadSkin(_T("themes\\skin1"));
-			GetRoot()->Invalidate();
-		}
-		else if (nID == 52)
-		{//skin2
-			SSkinLoader::getSingleton().LoadSkin(_T("themes\\skin2"));
-			GetRoot()->Invalidate();
-		}
-		else if (nID == 53)
-		{//skin3
-			SSkinLoader::getSingleton().LoadSkin(_T("themes\\skin3"));
-			GetRoot()->Invalidate();
-		}
-		
 		else if(nID==100)
         {//delete item in mclistview
             SMCListView *pListView = FindChildByName2<SMCListView>(L"mclv_test");
